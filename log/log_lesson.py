@@ -1,13 +1,12 @@
-from logging import CRITICAL, ERROR, WARNING, INFO, DEBUG
-from logging import basicConfig
-from logging import critical, error, warning, info, debug
-
+from logging import (CRITICAL, DEBUG, ERROR, INFO, WARNING, FileHandler,
+                     StreamHandler, basicConfig, critical, debug, error, info,
+                     warning)
 
 # Forma como o log vai se comportar na aplicação
 basicConfig(
     level=DEBUG,
-    filename='logs.log',
-    filemode='a',
+    format='%(levelname)s:%(asctime)s:%(message)s',
+    handlers=[StreamHandler(), FileHandler('logs.log', 'a')]
 )
 
 # debug('Estou testando')
